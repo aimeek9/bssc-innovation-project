@@ -1,89 +1,163 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  font-family: 'Lato', sans-serif;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
 
-.overlay {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.9);
-  overflow-x: hidden;
-  transition: 0.5s;
-}
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            left: -300px;
+            top: 0;
+            width: 300px;
+            height: 100%;
+            background-color: #333;
+            color: white;
+            padding-top: 20px;
+            transition: 0.3s;
+            z-index: 2;
+        }
 
-.overlay-content {
-  position: relative;
-  top: 25%;
-  width: 60%;
-  text-align: center;
-  margin-top: 30px;
-}
+        .sidebar.open {
+            left: 0;
+        }
 
-.overlay a {
-  padding: 8px;
-  text-decoration: none;
-  font-size: 36px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
 
-.overlay a:hover, .overlay a:focus {
-  color: #f1f1f1;
-}
+        .sidebar-toggle {
+            font-size: 24px;
+            cursor: pointer;
+        }
 
-.overlay .closebtn {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
-}
+        .menu-item {
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.2s;
+        }
 
-@media screen and (max-height: 450px) {
-  .overlay a {font-size: 20px}
-  .overlay .closebtn {
-  font-size: 40px;
-  top: 15px;
-  right: 35px;
-  }
-}
-</style>
+        .menu-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Sidenav Styles */
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        @media screen and (max-height: 450px) {
+            .sidenav {padding-top: 15px;}
+            .sidenav a {font-size: 18px;}
+        }
+    </style>
 </head>
 <body>
- <header>
+ <div class="top-menu">
+        <span class="sidebar-toggle" onclick="toggleSidebar()">&#9776;</span>
+    </div>
+
+    <div class="sidebar open" id="sidebar"> <!-- Set the sidebar to be open by default -->
+        <div class="sidebar-header">
+            <span class="sidebar-toggle" onclick="toggleSidebar()">&#9776;</span>
+            <h2>Menu</h2>
+        </div>
+        <a href="/calendar" class="menu-item">Calendar</a>
+        <a href="/schedule" class="menu-item">Schedule</a>
+        <a href="/habit-tracker" class="menu-item">Habit Tracker</a>
+        <a href="/to-do" class="menu-item">To-Do</a>
+    </div>
+
+    <header>
         <h1>Welcome to Productivity</h1>
-<div id="myNav" class="overlay">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <div class="overlay-content">
-    <a href="/calendar">Calendar</a>
-    <a href="/schedule">Schedule</a>
-    <a href="/habit-tracker">Habit Tracker</a>
-    <a href="/to-do">To-Do</a>
-  </div>
-</div>
-
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-
-<script>
-function openNav() {
-  document.getElementById("myNav").style.width = "100%";
-}
-
-function closeNav() {
-  document.getElementById("myNav").style.width = "0%";
-}
-</script>
+    </header>
+    <div class="container">
+        <h2>About Us</h2>
+        <p>We are here to help anyone become productive.</p>
+    </div>
     <footer>
         <p>&copy; 2023 Productivity. All rights reserved.</p>
-    </footer>     
+    </footer>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("open");
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
 </body>
 </html>
