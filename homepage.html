@@ -21,6 +21,18 @@
             margin: 0 auto;
             padding: 20px;
         }
+        .button-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
         footer {
             background-color: #333;
             color: white;
@@ -39,10 +51,15 @@
     <div class="container">
         <h2>About Us</h2>
         <p>We are here to help anyone become productive.</p>
+        <div class="button-container">
+            <a href="/" class="button">Home</a>
+            <a href="/calendar" class="button">Calendar</a>
+            <a href="/schedule" class="button">Schedule</a>
+            <a href="/habit-tracker" class="button">Habit Tracker</a>
+        </div>
     </div>
     <footer>
         <p>&copy; 2023 Productivity. All rights reserved.</p>
     </footer>
 </body>
 </html>
-
