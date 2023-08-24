@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #E6E3E2;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #7D7DB8;
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 36px;
+        }
+
+        /* Navigation Styles */
+        nav {
+            background-color: #333;
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a::before {
+            content: "";
+            display: block;
+            width: 0;
+            height: 2px;
+            background-color: #fff;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #007BFF;
+        }
+
+        nav ul li a:hover::before {
+            width: 100%;
+        }
+
+        /* Container Styles */
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 1em;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Habit Tracker Styles */
+        .habit {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1em;
+        }
+
+        .habit input[type="checkbox"] {
+            margin-right: 0.5em;
+        }
+
+        /* Add a little "x" to each habit */
+        .habit .remove-habit {
+            color: red;
+            margin-left: 1em;
+            cursor: pointer;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            left: -300px;
+            top: 0;
+            width: 300px;
+            height: 100%;
+            background-color: #333;
+            color: white;
+            padding-top: 20px;
+            transition: 0.3s;
+            z-index: 2;
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+
+        .sidebar-toggle {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .menu-item {
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.2s;
+        }
+
+        .menu-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Centered Home Button */
+        .home-button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .home-button {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .home-button:hover {
+            color: #007BFF;
+        }
+
+        .home-icon::before {
+            content: "\1F3E0"; /* Unicode for home icon */
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Habit Tracker
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/schedule">Schedule</a></li>
+            <li><a href="/calendar">Calendar</a></li>
+            <li>
+                <a href="/">
+                    <button class="home-button">
+                        <span class="home-icon"></span> Home
+                    </button>
+                </a>
+            </li>
+            <li><a href="/habit">Habit Tracker</a></li>
+            <li><a href="/todo">To-Do List</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div>
+            <input type="text" id="newHabit" placeholder="Enter a new habit">
+            <button onclick="addHabit()">Add Habit</button>
+        </div>
+        <div id="habitList">
+            <!-- Habits will be added here dynamically -->
+        </div>
+    </div>
+
+    <script>
+        // Function to toggle the sidebar
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("open");
+        }
+
+        // Function to add a habit
+        function addHabit() {
+            const habitInput = document.getElementById("newHabit");
+            const habitName = habitInput.value.trim();
+
+            if (habitName !== "") {
+                const habitList = document.getElementById("habitList");
+                const habitDiv = document.createElement("div");
+                habitDiv.className = "habit";
+                habitDiv.innerHTML = `
+                    <input type="checkbox">
+                    <label>${habitName}</label>
+                    <span class="remove-habit" onclick="removeHabit(this)">x</span>
+                `;
+                habitList.appendChild(habitDiv);
+                habitInput.value = "";
+            }
+        }
+
+        // Function to remove a habit
+        function removeHabit(button) {
+            const habit = button.parentElement;
+            habit.remove();
+        }
+    </script>
+</body>
+</html>
