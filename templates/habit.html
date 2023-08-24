@@ -1,1 +1,60 @@
 <button onclick="history.back()">Go Back</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #35424a;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 1em;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .habit {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1em;
+        }
+        .habit input[type="checkbox"] {
+            margin-right: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Habit Tracker</h1>
+    </header>
+    <div class="container">
+        <div class="habit">
+            <input type="checkbox">
+            <label>Exercise for 30 minutes</label>
+        </div>
+        <div class="habit">
+            <input type="checkbox">
+            <label>Read for 20 minutes</label>
+        </div>
+        <div class="habit">
+            <input type="checkbox">
+            <label>Drink 8 glasses of water</label>
+        </div>
+        <!-- Add more habits here -->
+    </div>
+</body>
+</html>
+
