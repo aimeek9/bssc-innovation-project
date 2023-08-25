@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-do list</title>
     <style>
+        <!-- global styles -->
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -12,6 +13,7 @@
             background-color: #E6E3E2;
         }
 
+        <!-- header styles -->
         header {
             background-color: #7D7DB8;
             color: #fff;
@@ -20,6 +22,7 @@
             font-size: 36px;
         }
 
+        <!-- navigation styles -->
         nav {
             background-color: #333;
             text-align: center;
@@ -67,11 +70,13 @@
             width: 100%;
         }
 
+        <!-- home button container styles -->
         .home-button-container {
             text-align: center;
             margin: 20px 0;
         }
 
+        <!-- home button styles -->
         .home-button {
             background-color: transparent;
             border: none;
@@ -85,17 +90,21 @@
             color: #007BFF;
         }
 
+        <!-- home icon styles -->
         .home-icon::before {
-            content: "\1F3E0";
+            content: "\1F3E0"; <!-- Unicode for home icon -->
             margin-right: 5px;
         }
 
+        <!-- board styles -->
         .board {
             display: flex;
             justify-content: space-between;
             max-width: 800px;
             margin: 0 auto;
         }
+
+        <!-- list styles -->
         .list {
             flex: 1;
             border: 1px solid #ccc;
@@ -103,6 +112,8 @@
             margin: 10px;
             background-color: #f9f9f9;
         }
+
+        <!-- task styles -->
         .task {
             background-color: #fff;
             border: 1px solid #ddd;
@@ -112,6 +123,8 @@
             justify-content: space-between;
             align-items: center;
         }
+
+        <!-- remove task styles -->
         .remove-task {
             cursor: pointer;
             color: red;
@@ -122,7 +135,7 @@
     <header>
         To-do list
     </header>
-        <nav>
+    <nav>
         <ul>
             <li><a href="/schedule">Schedule</a></li>
             <li><a href="/calendar">Calendar</a></li>
@@ -152,6 +165,7 @@
     </div>
 
     <script>
+        <!-- drag-and-drop functionality -->
         let dragSrcEl = null;
 
         function dragStart(event) {
@@ -170,6 +184,7 @@
             dragSrcEl = null;
         }
 
+        <!-- function to add a task -->
         function addTask(listId) {
             const newList = document.getElementById(listId);
             const newTaskInput = document.getElementById('new-task');
@@ -192,6 +207,7 @@
             }
         }
 
+        <!-- function to remove a task -->
         function removeTask(button) {
             const task = button.parentElement;
             task.remove();
