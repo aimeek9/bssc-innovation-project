@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Scheduler</title>
     <style>
-        /* Global Styles */
+        <!-- global styles -->
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -13,7 +13,7 @@
             background-color: #E6E3E2;
         }
 
-        /* Header Styles */
+        <!-- header styles -->
         header {
             background-color: #7D7DB8;
             color: #fff;
@@ -22,7 +22,7 @@
             font-size: 36px;
         }
 
-        /* Navigation Styles */
+        <!-- navigation styles -->
         nav {
             background-color: #333;
             text-align: center;
@@ -69,7 +69,7 @@
             width: 100%;
         }
 
-        /* Container Styles */
+        <!-- container styles -->
         .container {
             max-width: 800px;
             margin: 20px auto;
@@ -77,29 +77,29 @@
             border-radius: 5px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             display: flex;
-            flex-direction: column; /* Change to column layout */
+            flex-direction: column; <!-- Change to column layout -->
             align-items: center;
         }
 
-        /* Task Scheduler-specific Styles */
+        <!-- task scheduler-specific styles -->
         .schedule {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
-            max-width: 800px; /* Increase the maximum width */
-            margin: 20px auto; /* Adjust margin for spacing from header */
-            padding: 20px; /* Add padding to increase size */
-            background-color: #fff; /* Add a white background */
-            border-radius: 5px; /* Add border-radius */
+            max-width: 800px; <!-- Increase the maximum width -->
+            margin: 20px auto; <!-- Adjust margin for spacing from header -->
+            padding: 20px; <!-- Add padding to increase size -->
+            background-color: #fff; <!-- Add a white background -->
+            border-radius: 5px; <!-- Add border-radius -->
         }
 
         .time-slot {
             border: 1px solid #ccc;
             padding: 10px;
-            border-radius: 5px; /* Add border-radius */
+            border-radius: 5px; 
         }
 
-        /* Button Styles */
+        <!-- button Styles -->
         .home-button {
             background-color: transparent;
             border: none;
@@ -114,7 +114,7 @@
         }
 
         .home-icon::before {
-            content: "\1F3E0"; /* Unicode for home icon */
+            content: "\1F3E0"; <!-- unicode for home icon -->
             margin-right: 5px;
         }
     </style>
@@ -128,7 +128,7 @@
             <li><a href="/schedule">Schedule</a></li>
             <li><a href="/calendar">Calendar</a></li>
             <li>
-                <a href="/"> <!-- Link to the home page -->
+                <a href="/"> <!-- link to the home page -->
                     <button class="home-button">
                         <span class="home-icon"></span> Home
                     </button>
@@ -146,11 +146,12 @@
                 <input type="text" id="task1" placeholder="Enter your task">
                 <button onclick="addTask('time1', 'task1')">Add Task</button>
             </div>
-            <!-- Add more time slots here -->
+            
         </div>
     </div>
 
     <script>
+        <!-- function to add a task -->
         function addTask(timeInputId, taskInputId) {
             const timeInput = document.getElementById(timeInputId);
             const taskInput = document.getElementById(taskInputId);
@@ -167,12 +168,13 @@
                 `;
                 timeSlot.appendChild(taskElement);
 
-                // Clear input fields
+               <!-- clears input fields -->
                 timeInput.value = "";
                 taskInput.value = "";
             }
         }
 
+        <!-- Function to remove a task -->
         function removeTask(button) {
             const taskElement = button.parentElement;
             taskElement.remove();
