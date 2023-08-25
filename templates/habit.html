@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Habit Tracker</title>
     <style>
-        /* Global Styles */
+        <!-- global styles -->
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -13,7 +13,7 @@
             background-color: #E6E3E2;
         }
 
-        /* Header Styles */
+        <!-- header styles -->
         header {
             background-color: #7D7DB8;
             color: #fff;
@@ -22,7 +22,7 @@
             font-size: 36px;
         }
 
-        /* Navigation Styles */
+        <!-- navigation styles -->
         nav {
             background-color: #333;
             text-align: center;
@@ -70,7 +70,7 @@
             width: 100%;
         }
 
-        /* Container Styles */
+        <!-- container styles -->
         .container {
             max-width: 600px;
             margin: auto;
@@ -80,7 +80,7 @@
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        /* Habit Tracker Styles */
+        <!-- habit tracker styles -->
         .habit {
             display: flex;
             align-items: center;
@@ -91,14 +91,13 @@
             margin-right: 0.5em;
         }
 
-        /* Add a little "x" to each habit */
         .habit .remove-habit {
             color: red;
             margin-left: 1em;
             cursor: pointer;
         }
 
-        /* Sidebar Styles */
+        <!-- sidebar styles -->
         .sidebar {
             position: fixed;
             left: -300px;
@@ -140,7 +139,7 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-        /* Centered Home Button */
+        <!-- centered home button -->
         .home-button-container {
             text-align: center;
             margin: 20px 0;
@@ -160,7 +159,7 @@
         }
 
         .home-icon::before {
-            content: "\1F3E0"; /* Unicode for home icon */
+            content: "\1F3E0"; <!-- Unicode for home icon -->
             margin-right: 5px;
         }
     </style>
@@ -190,18 +189,18 @@
             <button onclick="addHabit()">Add Habit</button>
         </div>
         <div id="habitList">
-            <!-- Habits will be added here dynamically -->
+            
         </div>
     </div>
 
     <script>
-        // Function to toggle the sidebar
+        <!-- Function to toggle the sidebar -->
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
             sidebar.classList.toggle("open");
         }
 
-        // Function to add a habit
+        <!-- Function to add a habit -->
         function addHabit() {
             const habitInput = document.getElementById("newHabit");
             const habitName = habitInput.value.trim();
@@ -220,7 +219,7 @@
             }
         }
 
-        // Function to remove a habit
+        <!-- Function to remove a habit -->
         function removeHabit(button) {
             const habit = button.parentElement;
             habit.remove();
